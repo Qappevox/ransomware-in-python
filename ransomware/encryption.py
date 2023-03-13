@@ -23,6 +23,3 @@ def generateKey():
         k.close()
     return encryption_key
     
-
-#encryption_key = generateKey()
-#file_encryption('C:\\Users\\yohoh\\OneDrive\\Masaüstü\\CyberSecurity\\test\\cryption.txt', encryption_key)
