@@ -19,6 +19,3 @@ def getKey():
         k.close()
     print("encryption key --> {0}".format(encryption_key))
     return encryption_key
-
-#encryption_key = getKey()
-#file_decryption('C:\\Users\\yohoh\\OneDrive\\Masaüstü\\CyberSecurity\\test\\cryption.txt', encryption_key)
